@@ -1,19 +1,39 @@
 -- ========================================================
--- 3. DATABASE OPERATIONS & ANALYTICS
+-- ADVANCED BUSINESS INTELLIGENCE & SALES QUERIES
 -- ========================================================
 
--- Example 1: Join Users and Orders to find orders by each user
-SELECT Users.UserName, Orders.OrderDate, Orders.TotalAmount
-FROM Users
-JOIN Orders ON Users.UserID = Orders.UserID;
+-- 1. Regional Profitability and Average Discount Analysis
+SELECT 
+    Region,
+    Segment,
+    ROUND(SUM(Sales), 2) AS Total_Sales,
+    ROUND(SUM(Profit), 2) AS Net_Profit,
+    ROUND(AVG(Discount) * 100, 2) AS Avg_Discount_Percentage,
+    ROUND((SUM(Profit) / SUM(Sales)) * 100, 2) AS Profit_Margin_Percentage
+FROM ECommerce_Sales
+GROUP BY Region, Segment
+ORDER BY Net_Profit DESC;
 
--- Example 2: Add an index on Products table for faster search by ProductName
-CREATE INDEX idx_product_name ON Products (ProductName);
+-- 2. Top 10 Most Profitable Products vs Sales Volume
+SELECT 
+    Product_Name,
+    Category,
+    Sub_Category,
+    ROUND(SUM(Sales), 2) AS Total_Revenue,
+    SUM(Quantity) AS Total_Units_Sold,
+    ROUND(SUM(Profit), 2) AS Net_Profit
+FROM ECommerce_Sales
+GROUP BY Product_Name, Category, Sub_Category
+ORDER BY Net_Profit DESC
+LIMIT 10;
 
--- Example 3: Sort Orders by OrderDate descending
-SELECT * FROM Orders ORDER BY OrderDate DESC;
-
--- Example 4: Group OrderDetails by OrderID to calculate total items per order
-SELECT OrderID, SUM(Quantity) AS TotalItems
-FROM OrderDetails
-GROUP BY OrderID;
+-- 3. Shipping Efficiency and Delivery Speed Metrics
+SELECT 
+    Ship_Mode,
+    COUNT(Order_ID) AS Total_Orders,
+    ROUND(SUM(Sales), 2) AS Total_Sales,
+    ROUND(SUM(Profit), 2) AS Total_Profit,
+    ROUND(AVG(Quantity), 1) AS Avg_Items_Per_Order
+FROM ECommerce_Sales
+GROUP BY Ship_Mode
+ORDER BY Total_Orders DESC;
