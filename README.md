@@ -1,32 +1,40 @@
-# E-Commerce Database Design and Operations 🛒📊
+# E-Commerce Sales & Profit Analytics Dashboard 🛒📊
 
-This repository contains a comprehensive relational database design for an E-commerce platform. It includes the core database schema, sample data insertion scripts, and essential analytical SQL operations such as advanced JOINs, Indexing, Sorting, and Aggregations to demonstrate backend data management capabilities.
+This repository features a comprehensive data analytics and business intelligence project built upon a large-scale e-commerce dataset containing **~10,000 corporate and consumer transaction records**. The project covers relational modeling, shipping analytics, geographical performance tracking, and dynamic interactive dashboard designs.
 
-## 🗂️ Database Schema & Architecture
-
-The database architecture is designed with a normalized relational structure consisting of 4 core tables:
-1. **Users:** Handles customer profiles, credentials, and registration timelines.
-2. **Products:** Tracks inventory, product details, pricing, and stock levels.
-3. **Orders:** Documents main purchase transactions linked directly to unique users.
-4. **OrderDetails:** A robust junction table managing individual items within each order, supporting many-to-many relationships and calculating subtotals.
-
----
-
-## 🚀 Repository Structure
-
-The project is modularly structured for clean separation of database concerns:
-* `schema.sql` - Data Definition Language (DDL) scripts for table creations.
-* `data.sql` - Data Manipulation Language (DML) scripts for sample data insertion.
-* `queries.sql` - Analytical and operational business queries.
+## 🗂️ Dataset Overview (9,995 Records)
+The analysis is driven by a rich dataset consisting of 21 core attributes including:
+* **Order & Shipping Details:** Order Date, Ship Date, Ship Mode, Order ID.
+* **Customer Demographics:** Customer ID, Segment (Consumer, Corporate, Home Office), City, State, Region.
+* **Product Hierarchy:** Category (Furniture, Office Supplies, Technology), Sub-Category, Product Name.
+* **Financial Metrics:** Sales, Quantity, Discount, Profitability.
 
 ---
 
-## 💻 Getting Started & Installation
+## 🚀 Repository & Project Architecture
 
-### Prerequisites
-Ensure you have a local SQL environment set up (e.g., MySQL Workbench, PostgreSQL, or any standard SQL server client).
+The project is structured to demonstrate end-to-end data pipeline management:
+* `schema_production.sql` - Production-ready database schema designed to hold scale layouts.
+* `analytical_insights.sql` - Advanced business queries for trend detection and profitability matrix.
+* `E-commerce Sales Analysis Dashboard.xlsx` - The complete large dataset along with pivot engines, specific category sales, and the presentation dashboard.
 
-### Step-by-Step Setup
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/Fatih180804/ecommerce-database-design.git](https://github.com/Fatih180804/ecommerce-database-design.git)
+---
+
+## 🔍 Core Analytical Focus Areas
+
+### 1. Customer & Product Segmentation
+Analyzing metrics across different consumer segments and hierarchies to detect which sub-categories drive volume versus those driving net profit margins.
+
+### 2. Shipping & Logistics Efficiency
+Calculating the velocity of fulfillment modes (First Class, Same Day, Second Class, Standard Class) to optimize shipping delays and cost-to-profit ratios.
+
+### 3. Regional & Geographical Performance
+Mapping regional dominance (West, East, South, Central) to isolate high-discount regions that might be cannibalizing corporate revenue.
+
+---
+
+## 📈 Dashboard Highlights
+The included spreadsheet houses dedicated query structures and analytical views:
+* **Category Sales Profit Matrix:** Dynamic correlation between item discounts and total net returns.
+* **Region Sales Breakdown:** Spatial distribution of customer clusters.
+* **Top 10 Product Performers:** Outlier analysis separating high-revenue items from low-margin drivers.
